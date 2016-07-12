@@ -35,6 +35,10 @@ sleep 3
 
 	sudo yum install -y postgresql93 postgresql93-contrib postgresql93-devel postgresql93-server postgis2_93 postgis2_93-devel
 
+	sudo yum remove libevent
+	
+	sudo yum update -y
+
 echo "##### Initialize and start the postgresql-9.3 database"
 sleep 3
 
