@@ -2,7 +2,7 @@
 
 #### Description: Nominatim 2.3.1 Install for CentOS 6.7
 
-OSM=http://download.geofabrik.de/europe/monaco.html
+OSM=http://download.geofabrik.de/europe/monaco-latest.osm.pbf
 
 # bomb out if something goes wrong
 set -e
