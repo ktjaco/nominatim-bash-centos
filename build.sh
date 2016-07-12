@@ -2,7 +2,7 @@
 
 #### Description: Nominatim 2.3.1 Install for CentOS 6.7
 
-OSM=toronto-latest.osm.pbf
+OSM=http://download.geofabrik.de/europe/monaco.html
 
 # bomb out if something goes wrong
 set -e
@@ -190,7 +190,7 @@ sleep 3
 	# copy osm file from datastore
 	# this can be wget
 
-	wget https://s3.amazonaws.com/metro-extracts.mapzen.com/$OSM
+	wget $OSM
 
 	# run the osm import using the copied osm file
 	# the "planet-latest.osm.file" will have to be changed depending on the $OSM file downloaded
