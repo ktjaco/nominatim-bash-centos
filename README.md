@@ -10,7 +10,7 @@ $ cd nominatim-bash-centos
 ###2. Check permissions
 
 ```
-$ sudo chmod +x bash.sh
+$ sudo chmod +x build.sh
 ```
 
 ###3. Run the Nominatim 2.3.1 build script
