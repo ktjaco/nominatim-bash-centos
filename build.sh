@@ -4,6 +4,9 @@ OSM=planet-latest.osm.pbf
 
 IP=192.168.1.158
 
+# bomb out if something goes wrong
+set -e
+
 echo "##### Building Nominatim"
 sleep 3
 
@@ -13,10 +16,8 @@ echo "##### Copy Nominatim 2.3.1 from datastore"
 sleep 3
 
 	# copy nominatim 2.3.1 from datastore
-	# this can be a wget
-	#sshpass -p 'datastore' rsync -avzr datastore@$IP:/home/datastore/nominatim/Nominatim-2.3.1.tar.bz2 . <<-EOF
-	#yes
-	#EOF
+	
+	# wget http://www.nominatim.org/release/Nominatim-2.3.1.tar.bz2
 
 	sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/Nominatim-2.3.1.tar.bz2 . <<-EOF
 	yes
@@ -59,23 +60,27 @@ sleep 3
 	# copy optional data from datastore
 	# these can be wgets
 
-#	sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/wikipedia_article.sql.bin . <<-EOF
-#	yes
-#	EOF
+	# wget http://www.nominatim.org/data/wikipedia_article.sql.bin
+	# wget http://www.nominatim.org/data/wikipedia_redirect.sql.bin
+	# wget http://www.nominatim.org/data/gb_postcode_data.sql.gz
 
-#	sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/wikipedia_redirect.sql.bin . <<-EOF
-#	yes
-#	EOF
+	# sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/wikipedia_article.sql.bin . <<-EOF
+	# yes
+	# EOF
 
-#	sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/gb_postcode_data.sql.gz . <<-EOF
-#	yes
-#	EOF
+	# sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/wikipedia_redirect.sql.bin . <<-EOF
+	# yes
+	# EOF
 
-#	mv wikipedia_article.sql.bin data
+	# sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/gb_postcode_data.sql.gz . <<-EOF
+	# yes
+	# EOF
 
-#	mv wikipedia_redirect.sql.bin data
+	# mv wikipedia_article.sql.bin data
 
-#	mv gb_postcode_data.sql.gz data
+	# mv wikipedia_redirect.sql.bin data
+
+	# mv gb_postcode_data.sql.gz data
 
 echo "##### Creating postgres accounts - Create a postgres superuser for running the Nominatim import"
 sleep 3
@@ -108,14 +113,16 @@ sleep 3
 	# turn swap off
 
 	cd $HOME/Nominatim
+	
 	swapoff -a
 
 echo "##### Copying the .osm.pbf from datastore"
 sleep 3
 
 	# copy osm file from datastore
-	# this can be wget
-
+	
+	# wget http://free.nchc.org.tw/osm.planet/pbf/planet-latest.osm.pbf
+	
 	sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/$OSM . <<-EOF
 	yes
 	EOF
@@ -125,7 +132,7 @@ sleep 3
 	# cache parameters will have to be changed depending on available RAM
 	# the command below uses 80GB on a 90GB RAM VM
 
-	sudo runuser -l user -c '/home/user/Nominatim/utils/setup.php --osm-file /home/user/Nominatim/planet-latest.osm.pbf --all --osm2pgsql-cache 24000 2>&1'
+	sudo runuser -l user -c '/home/user/Nominatim/utils/setup.php --osm-file /home/user/Nominatim/planet-latest.osm.pbf --all --osm2pgsql-cache 50000 2>&1'
 
 echo "##### Add special phrases"
 sleep 3
