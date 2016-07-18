@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# bomb out if something goes wrong
-#set -e
-
 	setenforce 0
 
 echo "##### Installing Nominatim Dependencies #####"
