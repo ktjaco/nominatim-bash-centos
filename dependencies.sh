@@ -15,7 +15,7 @@ sleep 3
 
 	sudo yum update -y
 
-echo "##### Download postgresql-9.3 rpm for centos 9"
+echo "##### Download postgresql-9.3 rpm for centos"
 sleep 3
 
 	cd /etc/yum.repos.d/
@@ -41,9 +41,6 @@ sleep 3
 	# initialize database
 
 	sudo service postgresql-9.3 initdb
-
-	# start postgresql
-	
 
 echo "##### Postgresql-9.3 configuration settings"
 sleep 3
@@ -89,5 +86,3 @@ sleep 3
 
 sleep 3
 echo "#### Dependencies finished installing"
-
-
