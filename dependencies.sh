@@ -43,21 +43,7 @@ sleep 3
 	sudo service postgresql-9.3 initdb
 
 	# start postgresql
-
-	sudo service postgresql-9.3 start
-
-	sudo chkconfig postgresql-9.3 on
-
-echo "##### Install the remaining dependencies"
-sleep 3
-
-	# install remaining dependencies
-
-	sudo yum install -y git make automake gcc gcc-c++ libtool policycoreutils-python
-
-	sudo yum install -y php-pgsql php php-pear php-pear-DB libpqxx-devel proj-epsg
-
-	sudo yum install -y bzip2-devel bzip2 proj-devel geos-devel libxml2-devel protobuf-c-devel lua-devel boost-devel sshpass
+	
 
 echo "##### Postgresql-9.3 configuration settings"
 sleep 3
@@ -86,7 +72,20 @@ sleep 3
 
 	sudo sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" /var/lib/pgsql/9.3/data/postgresql.conf
 
-	sudo service postgresql-9.3 restart
+	sudo service postgresql-9.3 start
+
+	sudo chkconfig postgresql-9.3 on
+
+echo "##### Install the remaining dependencies"
+sleep 3
+
+	# install remaining dependencies
+
+	sudo yum install -y git make automake gcc gcc-c++ libtool policycoreutils-python
+
+	sudo yum install -y php-pgsql php php-pear php-pear-DB libpqxx-devel proj-epsg
+
+	sudo yum install -y bzip2-devel bzip2 proj-devel geos-devel libxml2-devel protobuf-c-devel lua-devel boost-devel sshpass
 
 sleep 3
 echo "#### Dependencies finished installing"
