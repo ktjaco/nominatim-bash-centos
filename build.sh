@@ -19,7 +19,7 @@ sleep 3
 	
 	# wget http://www.nominatim.org/release/Nominatim-2.3.1.tar.bz2
 
-	sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/Nominatim-2.3.1.tar.bz2 . <<-EOF
+	sshpass -p 'datastore' rsync -avzr datastore@$IP:/home/datastore/nominatim/Nominatim-2.3.1.tar.bz2 . <<-EOF
 	yes
 	EOF
 
@@ -64,15 +64,15 @@ sleep 3
 	# wget http://www.nominatim.org/data/wikipedia_redirect.sql.bin
 	# wget http://www.nominatim.org/data/gb_postcode_data.sql.gz
 
-	# sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/wikipedia_article.sql.bin . <<-EOF
+	# sshpass -p 'datastore' rsync -avzr datastore@$IP:/home/datastore/nominatim/wikipedia_article.sql.bin . <<-EOF
 	# yes
 	# EOF
 
-	# sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/wikipedia_redirect.sql.bin . <<-EOF
+	# sshpass -p 'datastore' rsync -avzr datastore@$IP:/home/datastore/nominatim/wikipedia_redirect.sql.bin . <<-EOF
 	# yes
 	# EOF
 
-	# sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/nominatim/gb_postcode_data.sql.gz . <<-EOF
+	# sshpass -p 'datastore' rsync -avzr datastore@$IP:/home/datastore/nominatim/gb_postcode_data.sql.gz . <<-EOF
 	# yes
 	# EOF
 
@@ -121,9 +121,9 @@ sleep 3
 
 	# copy osm file from datastore
 	
-	# wget http://free.nchc.org.tw/osm.planet/pbf/planet-latest.osm.pbf
+	# wget http://download.geofabrik.de/europe/monaco-latest.osm.pbf
 	
-	sshpass -p 'datastore' rsync -avzr datastore@192.168.1.158:/home/datastore/$OSM . <<-EOF
+	sshpass -p 'datastore' rsync -avzr datastore@$IP:/home/datastore/$OSM . <<-EOF
 	yes
 	EOF
 
