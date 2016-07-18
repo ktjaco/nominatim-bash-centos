@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # bomb out if something goes wrong
-set -e
+#set -e
 
 echo "##### Installing Nominatim Dependencies #####"
 sleep 5
