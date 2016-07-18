@@ -4,9 +4,6 @@ OSM=planet-latest.osm.pbf
 
 IP=192.168.1.158
 
-# bomb out if something goes wrong
-set -e
-
 echo "##### Building Nominatim"
 sleep 3
 
@@ -230,6 +227,3 @@ sleep 3
 
 sleep 3
 echo "##### Nominatim complete!"
-
-
-
