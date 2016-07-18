@@ -1,6 +1,6 @@
 #!/bin/sh
 
-	setenforce 0
+	sudo setenforce 0
 
 echo "##### Installing Nominatim Dependencies #####"
 sleep 5
